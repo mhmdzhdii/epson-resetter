@@ -1,0 +1,21 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Backups content (keep directory with .gitkeep)
+Backups/AutoBackup_*.json
+Backups/backup_*.json
+!Backups/.gitkeep
+
+# Temporary files
+*.bak
+*.tmp
+*.log
+
+# Compiled binaries (user can compile locally)
+EpsonResetter.exe
+
+# Zip archives
+*.zip

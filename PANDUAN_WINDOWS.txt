@@ -1,0 +1,98 @@
+========================================================================
+   PANDUAN PENGGUNAAN EPSON WASTE INK PAD RESETTER (WINDOWS NATIVE)
+========================================================================
+
+Aplikasi ini digunakan untuk mereset bantalan pembuangan tinta 
+(Waste Ink Pad Counter) yang penuh ("Service Required" / "Lampu Tinta & Kertas Berkedip") 
+pada printer Epson tanpa memerlukan aktivasi berbayar atau crack berbahaya.
+
+100% MENGGUNAKAN BAHASA PEMROGRAMAN & RUNTIME BAWAAN WINDOWS:
+- Berjalan langsung menggunakan PowerShell & .NET Windows Forms bawaan Windows.
+- TIDAK PERLU menginstall Python, Java, atau software runtime tambahan apapun!
+- Menggunakan Win32 Hardware API resmi Windows (GUID_DEVINTERFACE_USBPRINT & winspool.drv)
+  untuk komunikasi dua arah langsung ke chip EEPROM printer.
+
+Daftar Model yang Didukung (1,270+ model):
+- Seri L: L110, L120, L210, L220, L300, L310, L350, L355, L360, L365, L380, L385, 
+          L455, L485, L550, L565, L655, L800, L805, L850, L1110, L1210, L1300, L1800,
+          L3100, L3110, L3150, L3160, L3200, L3210, L3250, L3260, L4150, L5190, dll.
+- Seri EcoTank (ET): ET-2710, ET-2720, ET-2810, ET-2820, dll.
+- Seri XP & WF: Seluruh seri Expression Home dan WorkForce.
+
+
+------------------------------------------------------------------------
+A. CARA MENJALANKAN DI WINDOWS:
+------------------------------------------------------------------------
+1. Sambungkan printer Epson Anda ke laptop/PC dengan KABEL USB, dan pastikan printer dalam kondisi HIDUP (ON).
+2. Di dalam folder ini, pilih salah satu cara:
+   - OPSI 1 (Paling Direkomendasikan): Klik 2x file "JALANKAN_RESETTER.bat"
+   - OPSI 2 (Senyap tanpa jendela hitam): Klik 2x file "JALANKAN_RESETTER.vbs"
+   - OPSI 3 (Jadikan File EXE Kustom): Klik 2x file "Compile_Exe.bat" untuk mengompilasi
+     menjadi "EpsonResetter.exe" lengkap dengan ikon printer kustom (app.ico).
+3. Jendela aplikasi grafis Windows akan terbuka seketika.
+
+
+------------------------------------------------------------------------
+B. FITUR DAN PENINGKATAN TERBARU:
+------------------------------------------------------------------------
+1. Auto-Backup Sebelum Reset:
+   Setiap kali tombol Reset diklik, aplikasi secara otomatis mencadangkan data
+   sel counter chip printer ke folder 'Backups\AutoBackup_<Model>_<Waktu>.json'
+   sebelum memori diubah, sehingga data aman 100%.
+
+2. Auto-Verify Pasca-Reset:
+   Setelah perintah reset ditulis ke chip, aplikasi otomatis melakukan pembacaan
+   verifikasi dari memori fisik chip untuk memastikan nilai benar-benar 0% (0 poin).
+
+3. Indikator Status Port Online:
+   Dropdown printer secara otomatis menandai status koneksi fisik printer:
+   '[Online / Terhubung]' vs '[Offline]'.
+
+4. Info Diagnostik Printer:
+   Tombol '[📋 Info Diagnostik]' menampilkan laporan lengkap: status antrean cetak,
+   koneksi pipa USB fisik, firmware, limit maksimum bantalan, dan tombol Salin ke Clipboard.
+
+5. Alat Pemeliharaan Head Tinta (Maintenance Tools):
+   - '[🚿 Head Cleaning]': Mengirim sinyal Remote1 CH untuk siklus pemompaan tinta pembersih nozzle.
+   - '[📄 Cetak Nozzle Check]': Mengirim sinyal Remote1 NC untuk mencetak lembar pola garis nozzle.
+
+
+------------------------------------------------------------------------
+C. LANGKAH-LANGKAH RESET PRINTER:
+------------------------------------------------------------------------
+1. Pilih nama printer Anda di dropdown "Printer Windows" (akan tertera [Online / Terhubung]).
+2. Di kolom "Cari Model", ketik seri printer Anda (contoh: L120, L3110, L3210, dsb.).
+3. Klik tombol "🔍 1. Baca Counter":
+   - Aplikasi akan membaca nilai counter Main Pad dan Borderless Pad secara real-time.
+4. Klik tombol "⚡ 3. Reset Counter (0%)":
+   - Konfirmasi dialog peringatan.
+   - Sistem akan otomatis membuat cadangan (Auto-Backup), menulis reset, dan memverifikasi hasilnya.
+5. Setelah muncul notifikasi "Reset & Verifikasi Berhasil!":
+   - MATIKAN printer menggunakan tombol Power fisik pada printer.
+   - Tunggu 5 - 10 detik hingga lampu benar-benar padam total.
+   - NYALAKAN KEMBALI printer Anda.
+   - Lampu indikator oranye/merah berhenti berkedip dan printer normal kembali!
+
+
+------------------------------------------------------------------------
+D. CARA MENGUJI COBA TANPA PRINTER FISIK (MODE DEMO):
+------------------------------------------------------------------------
+Jika Anda ingin melihat antarmuka grafis dan mencoba simulasi reset sebelum mencolokkan printer:
+- Klik 2x file "Buka_Mode_Demo.bat", ATAU
+- Di dalam aplikasi, centang kotak "Gunakan Mode Simulasi / Demo".
+
+
+------------------------------------------------------------------------
+⚠️ PERINGATAN KESELAMATAN FISIK PENTING:
+------------------------------------------------------------------------
+Reset perangkat lunak ini HANYA menghapus batas counter elektronik di memori chip printer.
+Tinta buangan fisik yang terserap di dalam busa (waste pad) di bagian belakang bawah printer TIDAK otomatis bersih!
+
+Pastikan Anda:
+1. Membuka penutup kotak pembuangan di bagian belakang bawah printer.
+2. Mencuci busa pembuangan dengan air mengalir sampai bersih lalu keringkan, ATAU
+3. Mengganti busa dengan yang baru, ATAU
+4. Memasang selang/tabung pembuangan tinta eksternal di luar body printer.
+
+Jika busa tidak dibersihkan, tinta pekat berlebih lama-kelamaan akan meluber keluar dan dapat merusak meja atau papan sirkuit printer.
+========================================================================
